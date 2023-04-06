@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react'
 import Page from './Page'
 import Pagination from './Pagination';
 import axios from 'axios'
+import Search from "./Search";
+import Result from "./Result";
+//import { useState } from "react";
+
+
 function App() {
   const [pokemons, setPokemons] = useState([])
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pokemonsPerPage] = useState(10);
+
+  const [selectedTypes, setSelectedTypes] = useState([]);
+
 
   useEffect(() => {
     axios.get('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json')
@@ -24,6 +32,15 @@ function App() {
 
   return (
     <>
+    
+      <Search
+        selectedTypes={selectedTypes}
+        setSelectedTypes={setSelectedTypes}
+      />
+      <Result
+        selectedTypes={selectedTypes}
+      />
+    
       < Page currentPokemons={currentPokemons} currentPage={currentPage} />
       < Pagination
         numberOfPages={numberOfPages}
