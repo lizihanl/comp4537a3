@@ -5,16 +5,17 @@ import axios from 'axios';
 import Search from './Search';
 import Result from './Result';
 import Login from './login';
+import AdminPage from './AdminPage';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
-  // const [pokemons, setPokemons] = useState([]);
-  const [setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   // const [currentPage, setCurrentPage] = useState(1);
   //const [pokemonsPerPage] = useState(10);
 
-  const [selectedTypes, setSelectedTypes] = useState([]);
 
   useEffect(() => {
     axios
@@ -33,16 +34,25 @@ function App() {
 
   const handleLogin = (user) => {
     setLoggedInUser(user);
+    setIsAdmin(user.username === 'admin');
   };
 
   const handleLogout = () => {
     setLoggedInUser(null);
+    setIsAdmin(false);
   };
 
 
   return (
-    <>
-      {loggedInUser ? (
+    <>{isAdmin ? (
+      <>
+        <div id="logout-button-container">
+             <button id="logoutbutton" onClick={handleLogout}>Logout</button>
+        </div>
+        <AdminPage />
+      </>
+    ) : loggedInUser ? (
+      //{loggedInUser ? (
         <>
           <div id="logout-button-container">
              <button id="logoutbutton" onClick={handleLogout}>Logout</button>

@@ -4,8 +4,8 @@ import './login.css';
 
 
 function Login({ onLogin }) {
-  const [username, setUsername] = useState('user1');
-  const [password, setPassword] = useState('password1');
+  const [username, setUsername] = useState('admin');
+  const [password, setPassword] = useState('password2');
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -37,7 +37,7 @@ function Login({ onLogin }) {
 
 const validCredentials = [
     { username: 'user1', password: 'password1' },
-    { username: 'user2', password: 'password2' },
+    { username: 'admin', password: 'password2' },
   ];
   
   const handleSubmit = async (event) => {
