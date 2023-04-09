@@ -35,10 +35,18 @@ function App() {
     setLoggedInUser(user);
   };
 
+  const handleLogout = () => {
+    setLoggedInUser(null);
+  };
+
+
   return (
     <>
       {loggedInUser ? (
         <>
+          <div id="logout-button-container">
+             <button id="logoutbutton" onClick={handleLogout}>Logout</button>
+          </div><br />
           <Search selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
           <Result selectedTypes={selectedTypes} />
           {/* <Page currentPokemons={currentPokemons} currentPage={currentPage} />
