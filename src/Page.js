@@ -1,6 +1,6 @@
 import React from 'react'
 import Pokemon from './Pokemon'
-function page({ currentPokemons, currentPage }) {
+function page({ currentPokemons, currentPage}) {
   return (
     <div>
       <h1>
@@ -9,7 +9,7 @@ function page({ currentPokemons, currentPage }) {
       <div className="pokemon-list">
         {
           currentPokemons.map(item => {
-            return <Pokemon pokemon={item} />
+            return <Pokemon pokemon={item}/>
           })
         }
       </div>

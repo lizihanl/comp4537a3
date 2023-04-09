@@ -106,3 +106,58 @@ function Result({ selectedTypes }) {
 }
 
 export default Result;
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// import Pokemon from './Pokemon';
+// import PokemonDetails from './PokemonDetails';
+// import Page from './Page';
+// import Pagination from './Pagination';
+
+// function Result({ selectedTypes }) {
+//   const [pokemons, setPokemons] = useState([]);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [selectedPokemon, setSelectedPokemon] = useState(null);
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       const response = await axios.get('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json');
+//       setPokemons(response.data);
+//     }
+//     fetchData();
+//   }, []);
+
+//   const filteredPokemons = pokemons.filter(pokemon => pokemon.id);
+//   const filteredPokemonsByTypes = filteredPokemons.filter(pokemon =>
+//     selectedTypes.length === 0 || selectedTypes.every(type => pokemon.type.includes(type))
+//   );
+//   const itemsPerPage = 10;
+//   const totalItems = filteredPokemonsByTypes.length;
+//   const totalPages = Math.ceil(totalItems / itemsPerPage);
+//   const indexOfLastItem = currentPage * itemsPerPage;
+//   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+//   const currentPokemons = filteredPokemonsByTypes.slice(indexOfFirstItem, indexOfLastItem);
+
+//   const handlePokemonClick = (pokemon) => {
+//     setSelectedPokemon(pokemon);
+//   };
+
+//   return (
+//     <div>
+//       {selectedPokemon ? (
+//         <PokemonDetails pokemon={selectedPokemon} />
+//       ) : (
+//         <>
+//           <Page currentPokemons={currentPokemons} currentPage={currentPage} onPokemonClick={handlePokemonClick} />
+//           <Pagination
+//             numberOfPages={totalPages}
+//             currentPage={currentPage}
+//             setCurrentPage={setCurrentPage}
+//           />
+//         </>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default Result;
