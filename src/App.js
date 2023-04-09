@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Page from './Page';
-import Pagination from './Pagination';
+//import Page from './Page';
+//import Pagination from './Pagination';
 import axios from 'axios';
 import Search from './Search';
 import Result from './Result';
@@ -8,10 +8,11 @@ import Login from './login';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
-  const [pokemons, setPokemons] = useState([]);
+  // const [pokemons, setPokemons] = useState([]);
+  const [setPokemons] = useState([]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonsPerPage] = useState(10);
+  // const [currentPage, setCurrentPage] = useState(1);
+  //const [pokemonsPerPage] = useState(10);
 
   const [selectedTypes, setSelectedTypes] = useState([]);
 
@@ -25,10 +26,10 @@ function App() {
       .catch((err) => console.log('err', err));
   }, []);
 
-  const indexOfLastRecord = currentPage * pokemonsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - pokemonsPerPage;
-  const currentPokemons = pokemons.slice(indexOfFirstRecord, indexOfLastRecord);
-  const numberOfPages = Math.ceil(pokemons.length / pokemonsPerPage);
+  //const indexOfLastRecord = currentPage * pokemonsPerPage;
+  //const indexOfFirstRecord = indexOfLastRecord - pokemonsPerPage;
+  //const currentPokemons = pokemons.slice(indexOfFirstRecord, indexOfLastRecord);
+  //const numberOfPages = Math.ceil(pokemons.length / pokemonsPerPage);
 
   const handleLogin = (user) => {
     setLoggedInUser(user);
@@ -40,12 +41,12 @@ function App() {
         <>
           <Search selectedTypes={selectedTypes} setSelectedTypes={setSelectedTypes} />
           <Result selectedTypes={selectedTypes} />
-          <Page currentPokemons={currentPokemons} currentPage={currentPage} />
+          {/* <Page currentPokemons={currentPokemons} currentPage={currentPage} />
           <Pagination
             numberOfPages={numberOfPages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-          />
+          /> */}
         </>
       ) : (
         <Login onLogin={handleLogin} />
