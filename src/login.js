@@ -4,8 +4,8 @@ import './login.css';
 
 
 function Login({ onLogin }) {
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('password2');
+  const [username, setUsername] = useState('user1');
+  const [password, setPassword] = useState('password1');
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
